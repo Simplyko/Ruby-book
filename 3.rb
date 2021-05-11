@@ -8,7 +8,6 @@
 salary_house = 500000
 year = 30
 paying = 500000/30
-i=0
 30.times do |i|
 	salary_house = salary_house - paying
 	puts "#{i+1}-й год: Осталось выплатить #{salary_house}"
@@ -24,7 +23,6 @@ end
 salary_house = 500000
 year = 30
 paying = 500000/30
-i=0
 30.times do |i|
 	salary_house = salary_house - paying
 	puts "#{i+1}-й год: Осталось выплатить #{salary_house} + #{salary_house*0.04} (4% за использование кредита)"
@@ -38,9 +36,8 @@ end
 salary_house = 500000
 year = 30
 paying = 500000/30
-i=0
 credit = 0
-30.times do |i|
+30.times do
 	salary_house = salary_house - paying
 	credit = credit + salary_house*0.04
 end
