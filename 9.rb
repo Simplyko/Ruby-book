@@ -13,9 +13,6 @@
 
 Задание: улучшите программу, добавьте как минимум еще 3 события, которые могут влиять на результат судного дня.
 =end
-rescue => exception
-	
-end
 
 @humans = 10
 @machines = 10
@@ -25,25 +22,35 @@ def luck?
 end
 
 def boom
-	diff = rand(1..5)
+	@diff = rand(1..5)
 	if luck?
-		@machines -= diff
-		puts "#{diff} машин уничтожено"
+		@machines -= @diff
+		puts "#{@diff} машин уничтожено"
 	else
-		@humans -= diff
-		puts "#{diff} людей погибло"
+		@humans -= @diff
+		puts "#{@diff} людей погибло"
+	end
+end
+
+def born
+	if luck?
+		@machines += @diff
+		puts "#{@diff} машин построено"
+	else
+		@humans += @diff
+		puts "#{@diff} людей рождено"
 	end
 end
 
 def random_city
-	dice = rand(1..5)
-	if dice == 1
+	case dice = rand(1..5)
+	when 1
 		'Москва'
-	elsif dice == 2
+	when 2
 		'Лос-Анджелес'
-	elsif dice == 3
+	when 3
 		'Пекин'
-	elsif dice == 4
+	when 4
 		'Лондон'
 	else
 		'Сеул'
@@ -51,7 +58,7 @@ def random_city
 end
 
 def random_sleep
-	sleep rand(0.3..1.5)
+	sleep rand(0.3..0.4)
 end
 
 def stats
@@ -76,6 +83,18 @@ def event3
 	boom
 end
 
+def event4
+	puts "Долгоносик пожрал урожай в городе #{random_city}"
+end
+
+def event5
+	puts "Рик случайно повредил город #{random_city}"
+end
+
+def event6
+	puts "Спутник упал на город #{random_city}"
+end
+
 def check_victroy?
 	if (@humans == 0) || (@humans < 0)
 		puts "Machines WINs: Осталось 0 людей и #{@machines} машин"
@@ -91,16 +110,27 @@ loop do
 		exit
 	end
 
-	dice = rand(1..3)
+	dice = rand(1..6)
 	
-	if dice == 1
+	case dice
+	when 1
 		event1
-	elsif dice == 2
+	when 2
 		event2
-	elsif dice == 3
+	when 3
 		event3
+	when 4
+		event4
+	when 5
+		event5
+	when 6
+		event6
 	end
 	
+	stats
+	random_sleep
+	born
+	random_sleep
 	stats
 	random_sleep
 end
