@@ -15,32 +15,6 @@ inventory = {
   golf_ball: { available: 5, price_per_item: 5 }
 }
 
-=begin
-puts "Сумма товаров в корзине:"
-total = 0
-cart.each {|h| h.each{|ck,cv| 
-		inventory.each { |ik, iv| 
-			if cv == ik
-				sum = h[:qty]*iv[:price_per_item]
-				puts "#{ik} : #{sum}"
-				if h[:qty] > iv[:available]
-					sum = iv[:available]*iv[:price_per_item]
-					puts "#{h[:type]} не хватает на складе, имеется только #{iv[:available]} шт"
-				end
-				total += sum
-			end
-		}
-	}	
-}
-puts "Всего стоимость товаров #{total}"
-
-Вывод:
-	Сумма товаров в корзине:
-	soccer_ball : 200
-	tennis_ball : 90
-	tennis_ball не хватает на складе, имеется только 1 шт
-	Всего стоимость товаров 230
-=end
 total_price = 0
 cart.each do |elem|
   if inventory[elem[:type]] && inventory[elem[:type]][:available] >= elem[:qty]
