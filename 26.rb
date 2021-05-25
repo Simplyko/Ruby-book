@@ -23,7 +23,7 @@ i=0
 max = a[0]
 min = a[0]
 a.each do |i|
-	if  i>max
+	if i>max
 		max = i
 	elsif i<min
 		min = i
@@ -64,7 +64,7 @@ INSERT INTO hotel_room VALUES(6,1,29,290);
 COMMIT;
 
 /* Display all the records from the table */
-SELECT area FROM hotel_room WHERE price = ( SELECT MAX(price) FROM hotel_room)
+SELECT area FROM hotel_room WHERE price = ( SELECT MAX(price) FROM hotel_room);
 =end
 
 =begin
