@@ -5,9 +5,9 @@ def random_pow
 end
 
 def pow(x)
-	#binding.pry
-  #x ^ 2  не правильное возведение в квадрат, в Руби
-	x**2
+  # binding.pry
+  # x ^ 2  не правильное возведение в квадрат, в Руби
+  x**2
 end
 
 puts random_pow
